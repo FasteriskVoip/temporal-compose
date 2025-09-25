@@ -44,8 +44,8 @@ services:
       - ENABLE_ES=true
       - ES_SEEDS=elasticsearch
       - ES_VERSION=v7
-      - TEMPORAL_ADDRESS=https://temporal-api.jettati.com.br:7233
-      - TEMPORAL_CLI_ADDRESS=https://temporal-api.jettati.com.br:7233
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CLI_ADDRESS=temporal:7233
     image: temporalio/auto-setup:${TEMPORAL_VERSION}
     networks:
       - temporal-network
@@ -70,8 +70,8 @@ services:
     depends_on:
       - temporal
     environment:
-      - TEMPORAL_ADDRESS=temporal-api.jettati.com.br:7233
-      - TEMPORAL_CORS_ORIGINS=temporal-api.jettati.com.br:7233
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CORS_ORIGINS=http://localhost:8095
     image: temporalio/ui:${TEMPORAL_UI_VERSION}
     networks:
       - temporal-network
